@@ -13,6 +13,7 @@ app.use(cors())
 
 
 const uri = `mongodb+srv://${process.env.pdf_To_Html_DB_USER}:${process.env.pdf_To_Html_DB_PASS}@cluster0.prabmlk.mongodb.net/?retryWrites=true&w=majority`;
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
