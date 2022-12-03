@@ -16,13 +16,15 @@ const uri = `mongodb+srv://${process.env.pdf_To_Html_DB_USER}:${process.env.pdf_
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-const run =() =>{
+const run = async() =>{
     const userInfoCollection= client.db('PdfToHtml').collection('userInfoCollection')
 
     try{
 
         app.post(`/usersInfo`, async(res, req)=> {
-            
+            const usersInfo= req.body
+            const result = await userInfoCollection.insertOne(usersInfo)
+            res.send(result)
           
         })
 
