@@ -21,7 +21,10 @@ const run =() =>{
 
     try{
 
-      
+        app.post(`/usersInfo`, async(res, req)=> {
+            
+          
+        })
 
       
 
