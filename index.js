@@ -21,6 +21,14 @@ const run = async() =>{
 
     try{
 
+        // Read users data 
+
+        app.get(`/usersInfo`, async(res, req)=> {
+            const result = await userInfoCollection.find({}).toArray()
+            res.send(result)
+        })
+
+        // create users data 
         app.post(`/usersInfo`, async(res, req)=> {
             const usersInfo= req.body
             const result = await userInfoCollection.insertOne(usersInfo)
