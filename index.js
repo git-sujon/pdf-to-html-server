@@ -5,10 +5,10 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config()
 
 
-const port =env.process.PORT || 5000
+const port =process.env.PORT || 5000
 
 app.use(express.json())
-app.use()
+app.use(cors())
 
 
 
@@ -23,13 +23,13 @@ const run = async() =>{
 
         // Read users data 
 
-        app.get(`/usersInfo`, async(res, req)=> {
+        app.get(`/usersInfo`, async(req, res)=> {
             const result = await userInfoCollection.find({}).toArray()
             res.send(result)
         })
 
         // create users data 
-        app.post(`/usersInfo`, async(res, req)=> {
+        app.post(`/usersInfo`, async(req, res)=> {
             const usersInfo= req.body
             const result = await userInfoCollection.insertOne(usersInfo)
             res.send(result)
